@@ -1,0 +1,40 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.ColorPicker"
+             Title="Renk Seçici"
+             BackgroundColor="White">
+    <ScrollView>
+        <StackLayout Padding="20">
+            <StackLayout Orientation="Vertical" Margin="0,0,0,20">
+                <Label x:Name="redLabel" Text="Kırmızı Ton:" VerticalOptions="Center" TextColor="Red"/>
+                <Slider x:Name="redSlider" Minimum="0" Maximum="255" Value="0" WidthRequest="200"
+                        ThumbColor="Red" MinimumTrackColor="Red" ValueChanged="ColorSlider_ValueChanged"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Margin="0,0,0,20">
+                <Label x:Name="greenLabel" Text="Yeşil Ton:" VerticalOptions="Center" TextColor="Green"/>
+                <Slider x:Name="greenSlider" Minimum="0" Maximum="255" Value="0" WidthRequest="200"
+                        ThumbColor="Green" MinimumTrackColor="Green" ValueChanged="ColorSlider_ValueChanged"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Margin="0,0,0,20">
+                <Label x:Name="blueLabel" Text="Mavi Ton:" VerticalOptions="Center" TextColor="Blue"/>
+                <Slider x:Name="blueSlider" Minimum="0" Maximum="255" Value="0" WidthRequest="200"
+                        ThumbColor="Blue" MinimumTrackColor="Blue" ValueChanged="ColorSlider_ValueChanged"/>
+            </StackLayout>
+
+            <BoxView x:Name="colorPreview" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,20,0,0"/>
+
+            <Frame CornerRadius="5" BackgroundColor="#333333" Padding="3" Margin="0,20">
+                <Label x:Name="colorCode" Text="Renk Kodu = #000000" TextColor="White" Margin="0,10" HorizontalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ColorCode_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+            <Button Text="Rastgele" Clicked="RandomButton_Clicked" Margin="0,20" BackgroundColor="#333333" TextColor="White"/>
+            <Button Text="Renk Seçici" Clicked="ColorPickerButton_Clicked" Margin="0,20" BackgroundColor="#333333" TextColor="White"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

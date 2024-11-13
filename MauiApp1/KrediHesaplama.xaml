@@ -1,0 +1,53 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.KrediHesaplama"
+             xmlns:local="clr-namespace:MauiApp1"
+             Title="Kredi Hesaplama">
+
+    <ScrollView>
+        <ContentPage.Resources>
+        <Color x:Key="backgroundColor">#F8F8F8</Color>
+        <Color x:Key="entryBackgroundColor">#EFEFEF</Color>
+        <Color x:Key="buttonBackgroundColor">#333333</Color>
+        <Color x:Key="buttonTextColor">White</Color>
+        <Color x:Key="textColor">#333333</Color>
+        <Color x:Key="dividerColor">#CCCCCC</Color>
+
+        <x:Array x:Key="krediTurleri" Type="{x:Type x:String}">
+            <x:String>İhtiyaç Kredisi</x:String>
+            <x:String>Konut Kredisi</x:String>
+            <x:String>Taşıt Kredisi</x:String>
+            <x:String>Ticari Kredi</x:String>
+        </x:Array>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource backgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackLayout Grid.Column="0" BackgroundColor="#F8F8F8" Margin="25,110,20,20">
+            <Picker Title="Kredi Türü Seçiniz" x:Name="pickerKrediTuru" ItemsSource="{StaticResource krediTurleri}" BackgroundColor="#EFEFEF" TitleColor="{StaticResource textColor}" TextColor="{StaticResource textColor}" Margin="0,20,0,10"/>
+            <Entry Placeholder="Kredi Tutarı (₺)" x:Name="txtKrediTutari" BackgroundColor="{StaticResource entryBackgroundColor}" TextColor="{StaticResource textColor}" Keyboard="Numeric" Margin="0,10,0,10"/>
+            <Entry Placeholder="Yıllık Faiz Oranı (%)" x:Name="txtFaizOrani" BackgroundColor="{StaticResource entryBackgroundColor}" TextColor="{StaticResource textColor}" Keyboard="Numeric" Margin="0,10,0,10"/>
+            <Entry Placeholder="Vade (Ay)" x:Name="txtVade" BackgroundColor="{StaticResource entryBackgroundColor}" TextColor="{StaticResource textColor}" Keyboard="Numeric" Margin="0,10,0,10" TextChanged="TxtVade_TextChanged"/>
+            <Slider x:Name="sliderVade" Maximum="60" Minimum="1" ValueChanged="SliderVade_ValueChanged" BackgroundColor="{StaticResource entryBackgroundColor}" Margin="0,10,0,10"/>
+            <Button Text="Hesapla" Clicked="Hesapla_Clicked" BackgroundColor="{StaticResource buttonBackgroundColor}" TextColor="{StaticResource buttonTextColor}" CornerRadius="10" HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <StackLayout Grid.Column="1" BackgroundColor="#F8F8F8" Margin="25,200,20,20">
+            <Label Text="Aylık Taksit" FontAttributes="Bold" TextColor="{StaticResource textColor}" Margin="0,10,0,0"/>
+            <Label x:Name="lblAylıkTaksit" TextColor="{StaticResource textColor}" Margin="0,0,0,10"/>
+            <Label Text="Toplam Ödeme" FontAttributes="Bold" TextColor="{StaticResource textColor}" Margin="0,10,0,0"/>
+            <Label x:Name="lblToplamOdeme" TextColor="{StaticResource textColor}" Margin="0,0,0,10"/>
+            <Label Text="Toplam Faiz" FontAttributes="Bold" TextColor="{StaticResource textColor}" Margin="0,10,0,0"/>
+            <Label x:Name="lblToplamFaiz" TextColor="{StaticResource textColor}" Margin="0,0,0,10"/>
+        </StackLayout>
+    </Grid>
+    </ScrollView>
+</ContentPage>
